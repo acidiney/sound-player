@@ -1,12 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <app-menu />
     <router-view/>
   </div>
 </template>
+<script>
+import Menu from '@/components/Menu'
+
+export default {
+  name: 'app',
+  components: {
+    'app-menu': Menu
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -15,6 +22,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #0f0f0f !important;
+  height: 100%;
 }
 #nav {
   padding: 30px;
