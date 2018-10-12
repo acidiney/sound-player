@@ -1,57 +1,74 @@
 <template>
-  <div>
-    <vs-navbar v-model="activeItem" class="nabarx">
-      <vs-navbar-title>
-        🔊 Sound Player
-      </vs-navbar-title>
-      <vs-spacer></vs-spacer>
-      <vs-input vs-icon="search" placeholder="Search" vs-size="normal" v-model="search"/>
-      <vs-spacer></vs-spacer>
-      <vs-navbar-item index="0">
-        <a href="#">Discovery</a>
-      </vs-navbar-item>
-      <vs-navbar-item index="1">
-        <a href="#">PodCast</a>
-      </vs-navbar-item>
-      <vs-navbar-item index="2">
-        <a href="#">Account</a>
-      </vs-navbar-item>
-    </vs-navbar>
-  </div>
+  <header>
+    <app-logo></app-logo>
+    <div class="search">
+        <app-input icon="search" placehold="O que procura..." type="search"></app-input>
+    </div>
+    <nav>
+      <ul>
+        <li> Descubrir </li>
+        <li> PodCast </li>
+        <li class="my-account"> Account </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 <script>
+import Logo from './Logo'
+import Input from './Input'
 export default {
   name: 'Menu',
   data: function () {
     return {
-      activeItem: 0,
-      search: ''
+
     }
+  },
+  components: {
+    'app-logo': Logo,
+    'app-input': Input
   }
 }
 </script>
 <style lang="scss" scoped>
-  .nabarx {
-    height: 5pc;
-    padding: 0 6pc;
-    color: #fff !important;
-    background:#0f0f0f !important;
-  }
-  .vs-navbar-title {
-    color: #1f74ff !important;
-  }
-  .vs-inputx {
-    border:0 !important;
-  }
-  .vs-navbar-item {
-    font-size: 12pt;
-    color: inherit !important;
-    a {
-      font-size: inherit !important;
-      color: inherit !important;
-      &:hover{
-        color: #1f74ff !important;
+  header {
+    height: 4pc;
+    width: 100%;
+    padding: 0.5pc 4pc;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+      div.search {
+        flex: 1.5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
+      nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div.logo, div.search, nav {
+        box-sizing: border-box;
+        padding: 5px;
+      }
+  }
+
+  .my-account {
+    color: #f0f0f0;
+    background-color: #f06206;
+    border-radius: 10px;
+    padding: 3px 10px;
+  }
+
+  ul {
+    li {
+      list-style: none;
+      display: inline;
+      justify-content: space-between;
+      padding: 0 10px;
+      cursor: pointer;
     }
   }
 </style>

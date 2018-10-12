@@ -1,16 +1,19 @@
 import Vue from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Vuesax from 'vuesax'
 
-import 'vuesax/dist/vuesax.css'
-import 'material-icons/iconfont/material-icons.css'
+import './assets/global.css'
 import './registerServiceWorker'
 
-Vue.config.productionTip = false
+library.add([faSearch])
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.use(Vuesax)
+Vue.config.productionTip = false
 
 new Vue({
   router,
