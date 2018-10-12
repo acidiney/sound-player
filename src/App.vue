@@ -22,7 +22,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #0f0f0f !important;
   height: 100%;
 }
 #nav {
