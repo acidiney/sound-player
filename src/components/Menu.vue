@@ -2,9 +2,15 @@
   <header>
     <app-logo></app-logo>
     <div class="search">
-        <app-input></app-input>
+        <app-input icon="search" placehold="O que procura..." type="search"></app-input>
     </div>
-    <nav></nav>
+    <nav>
+      <ul>
+        <li> Descubrir </li>
+        <li> PodCast </li>
+        <li class="my-account"> Account </li>
+      </ul>
+    </nav>
   </header>
 </template>
 <script>
@@ -31,20 +37,38 @@ export default {
     box-sizing: border-box;
     border-bottom: 1px solid #ccc;
     display: flex;
-    justify-content: space-evenly;
       div.search {
         flex: 1.5;
-        border: 1px solid #ddd;
-        text-align: center;
-        align-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       nav {
         flex: 1;
-        border: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       div.logo, div.search, nav {
         box-sizing: border-box;
         padding: 5px;
       }
+  }
+
+  .my-account {
+    color: #f0f0f0;
+    background-color: #f06206;
+    border-radius: 10px;
+    padding: 3px 10px;
+  }
+
+  ul {
+    li {
+      list-style: none;
+      display: inline;
+      justify-content: space-between;
+      padding: 0 10px;
+      cursor: pointer;
+    }
   }
 </style>

@@ -1,13 +1,28 @@
 <template>
-  <div class="logo"> SOUND PLAYER </div>
+  <div class="logo">
+    <p>
+      SOUND <span> PLAYER </span>
+    </p>
+  </div>
 </template>
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Chakra+Petch");
+@import url("https://fonts.googleapis.com/css?family=Righteous");
 div.logo {
   flex: 0.5;
   font-weight: bolder;
-  font-size: 21pt;
+  font-size: 19pt;
   align-items: center;
-  font-family: "Chakra Petch";
+  font-family: "Righteous" !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: #0974cc;
+    span {
+      color: #f06206;
+    }
+  }
+
 }
 </style>
