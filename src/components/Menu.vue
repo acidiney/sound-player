@@ -42,6 +42,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 15px;
       }
       nav {
         flex: 1;

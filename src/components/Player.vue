@@ -27,6 +27,7 @@
  div#player {
    position: fixed;
    bottom: 0;
+   background: #fff;
    border-top: 1px solid #ccc;
    width: 100%;
    height: 4pc;
