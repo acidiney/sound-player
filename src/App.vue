@@ -2,15 +2,18 @@
   <div id="app">
     <app-menu />
     <router-view/>
+    <app-player />
   </div>
 </template>
 <script>
 import Menu from '@/components/Menu'
+import Player from '@/components/Player'
 
 export default {
   name: 'app',
   components: {
-    'app-menu': Menu
+    'app-menu': Menu,
+    'app-player': Player
   }
 }
 </script>
