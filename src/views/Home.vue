@@ -1,35 +1,107 @@
 <template>
-  <div class="home">
-    <div class="list">
-      <app-card v-for="(i, index) in 6" :key="index"/>
-    </div>
-    <div class="list">
-      <app-card v-for="(i, index) in 6" :key="index"/>
-    </div>
-    <div class="list">
-      <app-card v-for="(i, index) in 6" :key="index"/>
-    </div>
-    <div class="list">
-      <app-card v-for="(i, index) in 6" :key="index"/>
-    </div>
+  <div id="home">
+    <nav class="border-bottom categories">
+      <ul>
+        <li>POP</li>
+        <li>Dance</li>
+        <li>Rock</li>
+        <li>Classic</li>
+      </ul>
+    </nav>
+    <section class="banner" v-bind:style="{'background': `url(${banner})`}">
+    </section>
+    <section class="cards">
+      <h4> Descubra </h4>
+      <div class="row">
+        <app-card v-for="i in 2" v-bind:key="i"></app-card>
+      </div>
+      <div class="row">
+        <app-card v-for="i in 2" v-bind:key="i"></app-card>
+      </div>
+      <div class="row">
+        <app-card v-for="i in 2" v-bind:key="i"></app-card>
+      </div>
+      <div class="row">
+        <app-card v-for="i in 2" v-bind:key="i"></app-card>
+      </div>
+
+    </section>
   </div>
 </template>
+<style lang="scss" scoped>
+
+  @mixin fontActive () {
+    font-weight: 900;
+  }
+
+  #home {
+    position: relative;
+    height: 80%;
+    box-sizing: border-box;
+    overflow-y: visible;
+    .categories {
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+      height: auto;
+      padding: 5px;
+      ul {
+        li {
+          color: white;
+          padding-left: 10px;
+          transition: .26s all ease-in-out;
+          &:hover {
+            @include fontActive();
+          }
+        }
+      }
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      padding-top: 12px;
+
+      .row {
+        display: flex;
+        justify-content: space-around;
+        margin: 5px 0;
+      }
+    }
+  }
+
+  .banner {
+    border: 1px solid #11111145;
+    height: 150px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    border-radius: 20px;
+  }
+
+  h4 {
+    color: white;
+    margin-left: 20px;
+  }
+  .active-item {
+    @include fontActive();
+  }
+</style>
 <script>
-// @ is an alias to /src
 import Card from '@/components/Card'
+
 export default {
-  name: 'home',
+  name: 'app-home',
   components: {
     'app-card': Card
+  },
+  data: function () {
+    return {
+      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg'
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
-div.home {
-  padding: 12px;
-  div.list {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-</style>

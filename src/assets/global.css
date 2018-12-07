@@ -1,5 +1,26 @@
 html,
 body {
-    padding: 0 !important;
-    margin:0 !important;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 1.5pc;
+    width: 100%;
+    background: linear-gradient(to bottom, #333, #111);
+
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+li {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+.border-bottom {
+    border-bottom: 1px solid #f0f0f069;
 }
