@@ -13,18 +13,10 @@
     <section class="cards">
       <h4> Descubra </h4>
       <div class="row">
-        <app-card v-for="i in 2" v-bind:key="i"></app-card>
+        <app-card v-for="(item,i) in recommends" v-bind:key="i"
+          :data="item"
+        ></app-card>
       </div>
-      <div class="row">
-        <app-card v-for="i in 2" v-bind:key="i"></app-card>
-      </div>
-      <div class="row">
-        <app-card v-for="i in 2" v-bind:key="i"></app-card>
-      </div>
-      <div class="row">
-        <app-card v-for="i in 2" v-bind:key="i"></app-card>
-      </div>
-
     </section>
   </div>
 </template>
@@ -100,8 +92,17 @@ export default {
   },
   data: function () {
     return {
-      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg'
+      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg',
+      recommends: []
     }
+  },
+  created: function () {
+    this.$db.collection("recommends").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // console.log(`${doc.id} => ${doc.data()}`);
+        this.recommends.push(doc.data())
+    });
+});
   }
 }
 </script>

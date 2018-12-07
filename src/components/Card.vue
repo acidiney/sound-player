@@ -1,12 +1,12 @@
 <template>
-  <div class="card">
+  <div class="card" @click="startPlay(data)">
     <header>
       <img src="../assets/music.png" alt="music" height="75" width="75">
     </header>
     <div class="bottom-info">
       <p>
-        <span>Music</span> <br>
-        <small> Author </small>
+        <span>{{data.title}}</span> <br>
+        <small> {{data.author}} </small>
       </p>
     </div>
   </div>
@@ -21,3 +21,16 @@
     padding: 5px 9px;
   }
 </style>
+<script>
+  export default {
+    name: 'app-card',
+    props: [
+      'data'
+    ],
+    methods: {
+      startPlay: function (data) {
+        this.$store.dispatch('playmusic', data)
+      }
+    }
+  }
+</script>
