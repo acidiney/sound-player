@@ -30,6 +30,5 @@ export default {
     height: 100%;
     width: 100%;
     font-family: 'Open sans', sans-serif;
-    background: linear-gradient(to bottom, #333, #111);
   }
 </style>

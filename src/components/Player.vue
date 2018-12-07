@@ -41,6 +41,7 @@
 
 #player-root {
   position: fixed;
+  background-color: #111;
   width: 100%;
   bottom: 0;
   display: flex;
