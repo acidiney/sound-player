@@ -1,7 +1,10 @@
 <template>
   <div id="player-root" v-bind:style="{ 'box-shadow': `8px 2px 6px 3px ${currentColor}` }">
     <div class="thumb">
-      <img src="../assets/cd.png" alt="cd" height="50" width="50">
+      <!-- img src="../assets/cd.png" alt="cd" height="50" width="50" -->
+      <p>
+        <span><font-awesome-icon v-bind:icon="nextState" v-on:click="toogleStreamState()"  /></span>
+      </p>
       <p>
         <span> {{ singer.tracks[0].name }} </span> <br />
         <small> {{ singer.name }} </small>
@@ -9,13 +12,14 @@
     </div>
     <div class="player">
       <div class="config">
-        
         <div class="sound-current"></div>
       </div>
     </div>
     <div class="comp">
-      <font-awesome-icon icon="volume-up"/>
-      <div class="volume-current"></div>
+      <font-awesome-icon icon="volume-up" v-on:click="toogleSlider()"/>
+      <div class="volume-current" :hidden="!sliderRange">
+        <input type="range" min="1" max="100" value="50">
+      </div>
     </div>
   </div>
   <!-- template>
@@ -45,17 +49,28 @@
   box-sizing: border-box;
   padding: 0 30px;
   box-shadow: 8px 2px 6px 3px #000;
-
   div.thumb, div.comp {
     @include player-display-config();
   }
   div.thumb {
     justify-content: space-between;
+    width: 40%;
+
+    p:first-child {
+      span {
+        font-size: 24pt;
+        cursor: pointer;
+      }
+    }
   }
 }
 
 p {
   margin: 0;
+}
+
+input[type="range"] {
+  border-radius: 12px;
 }
 </style>
 <script>
@@ -69,7 +84,9 @@ p {
           ],
           name: 'Abacate'
         },
-        currentColor: "000"
+        currentColor: "000",
+        streamState: false,
+        sliderRange: false
       }
     },
     watch: {
@@ -88,6 +105,19 @@ p {
             this.currentColor = "#" + newColor
             newColor = ''
         }, 3000);
+      },
+      toogleStreamState: function () {
+        setTimeout(() => {
+          this.streamState = !this.streamState 
+        }, 2000)
+      },
+      toogleSlider: function () {
+        this.sliderRange = !this.sliderRange
+      }
+    },
+    computed: {
+      nextState: function () {
+        return !this.streamState ? 'play-circle' : 'pause-circle'
       }
     }
   }
