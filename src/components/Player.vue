@@ -1,19 +1,15 @@
 <template>
-  <div id="player">
+  <div id="player-root" v-bind:style="{ 'box-shadow': `8px 2px 6px 3px ${currentColor}` }">
     <div class="thumb">
       <img src="../assets/cd.png" alt="cd" height="50" width="50">
       <p>
-        <span> Music </span> <br />
-        <small> Author </small>
+        <span> {{ singer.tracks[0].name }} </span> <br />
+        <small> {{ singer.name }} </small>
       </p>
     </div>
     <div class="player">
       <div class="config">
-        <ul>
-          <li><font-awesome-icon icon="step-backward"  /></li>
-          <li><font-awesome-icon icon="play-circle"  /></li>
-          <li><font-awesome-icon icon="step-forward"  /></li>
-        </ul>
+        
         <div class="sound-current"></div>
       </div>
     </div>
@@ -22,79 +18,77 @@
       <div class="volume-current"></div>
     </div>
   </div>
+  <!-- template>
+    <ul>
+          <li><font-awesome-icon icon="step-backward"  /></li>
+          <li><font-awesome-icon icon="play-circle"  /></li>
+          <li><font-awesome-icon icon="step-forward"  /></li>
+        </ul>
+  </template -->
 </template>
 <style lang="scss" scoped>
- div#player {
-   position: fixed;
-   bottom: 0;
-   background: #fff;
-   border-top: 1px solid #ccc;
-   width: 100%;
-   height: 4pc;
-   display: flex;
-    .thumb {
-      flex:1;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      justify-items: flex-end;
-      padding: 0 0 0 1pc;
 
-      p {
-        padding-left: 1pc;
-        color: #444;
-        font-weight: 500;
-        small {
-          font-weight: 100;
-        }
-      }
-    }
-    .player {
-      flex: 2;
-      display: flex;
-      align-items: center;
-      justify-items: center;
-      .config {
-        width: 100%;
-        ul {
-          li {
-            list-style: none;
-            display: inline;
-            font-size: 16pt;
-            padding-left: 10px;
-            cursor: pointer;
-            color:#444;
-          }
-          margin-top: 0px;
-          margin-bottom: 5px;
-          margin-left: 0;
-          margin-right: 0;
-          padding: 0;
-        }
-        .sound-current {
-          width: 20pc;
-          border:3px solid #444;
-          margin: 0 auto;
-          border-radius: 10px;
-        }
-      }
-    }
-    .comp {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-items: center;
+@mixin player-display-config() {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+}
 
-      svg {
-        cursor:pointer;
-      }
-      .volume-current {
-        width: 7pc;
-        border:3px solid #444;
-        margin-left: 12px;
-        cursor: pointer;
-        border-radius: 10px;
-      }
-    }
- }
+#player-root {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  border-top: 1px solid #f0f0f069;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30px;
+  box-shadow: 8px 2px 6px 3px #000;
+
+  div.thumb, div.comp {
+    @include player-display-config();
+  }
+  div.thumb {
+    justify-content: space-between;
+  }
+}
+
+p {
+  margin: 0;
+}
 </style>
+<script>
+  export default {
+    name: 'app-player',
+    data: function () {
+      return {
+        singer: {
+          tracks: [
+            { name: 'New UI' }
+          ],
+          name: 'Abacate'
+        },
+        currentColor: "000"
+      }
+    },
+    watch: {
+      wRandomColor: {
+        handler: 'randomColor',
+        immediate: true
+      }
+    },
+    methods: {
+      randomColor: function () {
+        setInterval(() => {
+          let newColor = ''
+            for(let i = 0; i < 6; i++) {
+              newColor += Math.floor(Math.random() / 0.1)
+            }
+            this.currentColor = "#" + newColor
+            newColor = ''
+        }, 3000);
+      }
+    }
+  }
+</script>
