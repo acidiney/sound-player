@@ -15,7 +15,7 @@
         <app-card v-for="i in 2" v-bind:key="i"></app-card>
       </div>
       <div class="row">
-        <app-card v-for="i in 3" v-bind:key="i"></app-card>
+        <app-card v-for="i in 2" v-bind:key="i"></app-card>
       </div>
       <div class="row">
         <app-card v-for="i in 2" v-bind:key="i"></app-card>
