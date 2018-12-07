@@ -101,7 +101,11 @@ export default {
       }, 3000)
     },
     toogleStreamState: function () {
-      this.$store.dispatch('toogleStreamState')
+      if (this.streamState) {
+        this.$store.dispatch('stopStream')
+      } else {
+        this.$store.dispatch('startStream')
+      }
     },
     toogleSlider: function () {
       this.sliderRange = !this.sliderRange

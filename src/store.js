@@ -16,7 +16,7 @@ export default new Vuex.Store({
       singer: '',
       music: '',
       url: '',
-      playng: null
+      playng: new Audio()
     },
     streamState: false
   },
@@ -31,11 +31,19 @@ export default new Vuex.Store({
     playmusic: function ({ commit }, data) {
       commit('modifyCurrentMusic', data)
     },
-    toogleStreamState: function ({ state }) {
+    startStream: function ({ state }) {
       if (state.currentMusic.singer.length > 0) {
-        state.streamState = !state.streamState
-        state.currentMusic.playng = window.storage.child(state.currentMusic.url).fullPath
+        state.streamState = true
+
+        window.storage.child(state.currentMusic.url).getDownloadURL().then((url) => {
+          state.currentMusic.playng.src = url
+          state.currentMusic.playng.play()
+        })
       } else if (state.currentMusic.singer.length < 0) {}
+    },
+    stopStream: function ({ state }) {
+      state.streamState = false
+      state.currentMusic.playng.pause()
     }
   }
 })
