@@ -6,8 +6,8 @@
         <span><font-awesome-icon v-bind:icon="nextState" v-on:click="toogleStreamState()"  /></span>
       </p>
       <p>
-        <span> {{ singer.tracks[0].name }} </span> <br />
-        <small> {{ singer.name }} </small>
+        <span> {{ currentSong.music }} </span> <br />
+        <small> {{ currentSong.singer }} </small>
       </p>
     </div>
     <div class="player">
@@ -79,14 +79,7 @@ export default {
   name: 'app-player',
   data: function () {
     return {
-      singer: {
-        tracks: [
-          { name: 'New UI' }
-        ],
-        name: 'Abacate'
-      },
       currentColor: '000',
-      streamState: false,
       sliderRange: false
     }
   },
@@ -108,9 +101,7 @@ export default {
       }, 3000)
     },
     toogleStreamState: function () {
-      setTimeout(() => {
-        this.streamState = !this.streamState
-      }, 2000)
+      this.$store.dispatch('toogleStreamState')
     },
     toogleSlider: function () {
       this.sliderRange = !this.sliderRange
@@ -119,6 +110,12 @@ export default {
   computed: {
     nextState: function () {
       return !this.streamState ? 'play-circle' : 'pause-circle'
+    },
+    currentSong: function () {
+      return this.$store.state.currentMusic
+    },
+    streamState: function () {
+      return this.$store.state.streamState
     }
   }
 }
