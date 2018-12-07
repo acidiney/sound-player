@@ -18,7 +18,9 @@ div.logo {
   justify-content: center;
 
   p {
-    color: #0974cc;
+    color: #f0f0f0;
+    margin-bottom: 6px;
+    margin-top: 2vh;
     span {
       color: #f06206;
     }
