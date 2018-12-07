@@ -75,51 +75,51 @@ input[type="range"] {
 }
 </style>
 <script>
-  export default {
-    name: 'app-player',
-    data: function () {
-      return {
-        singer: {
-          tracks: [
-            { name: 'New UI' }
-          ],
-          name: 'Abacate'
-        },
-        currentColor: "000",
-        streamState: false,
-        sliderRange: false
-      }
-    },
-    watch: {
-      wRandomColor: {
-        handler: 'randomColor',
-        immediate: true
-      }
-    },
-    methods: {
-      randomColor: function () {
-        setInterval(() => {
-          let newColor = ''
-            for(let i = 0; i < 6; i++) {
-              newColor += Math.floor(Math.random() / 0.1)
-            }
-            this.currentColor = "#" + newColor
-            newColor = ''
-        }, 3000);
+export default {
+  name: 'app-player',
+  data: function () {
+    return {
+      singer: {
+        tracks: [
+          { name: 'New UI' }
+        ],
+        name: 'Abacate'
       },
-      toogleStreamState: function () {
-        setTimeout(() => {
-          this.streamState = !this.streamState 
-        }, 2000)
-      },
-      toogleSlider: function () {
-        this.sliderRange = !this.sliderRange
-      }
+      currentColor: '000',
+      streamState: false,
+      sliderRange: false
+    }
+  },
+  watch: {
+    wRandomColor: {
+      handler: 'randomColor',
+      immediate: true
+    }
+  },
+  methods: {
+    randomColor: function () {
+      setInterval(() => {
+        let newColor = ''
+        for (let i = 0; i < 6; i++) {
+          newColor += Math.floor(Math.random() / 0.1)
+        }
+        this.currentColor = '#' + newColor
+        newColor = ''
+      }, 3000)
     },
-    computed: {
-      nextState: function () {
-        return !this.streamState ? 'play-circle' : 'pause-circle'
-      }
+    toogleStreamState: function () {
+      setTimeout(() => {
+        this.streamState = !this.streamState
+      }, 2000)
+    },
+    toogleSlider: function () {
+      this.sliderRange = !this.sliderRange
+    }
+  },
+  computed: {
+    nextState: function () {
+      return !this.streamState ? 'play-circle' : 'pause-circle'
     }
   }
+}
 </script>

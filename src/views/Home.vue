@@ -8,7 +8,8 @@
         <li>Classic</li>
       </ul>
     </nav>
-    <section class="banner"> BARNNER </section>
+    <section class="banner" v-bind:style="{'background': `url(${banner})`}">
+    </section>
     <section class="cards">
       <h4> Descubra </h4>
       <div class="row">
@@ -23,7 +24,7 @@
       <div class="row">
         <app-card v-for="i in 2" v-bind:key="i"></app-card>
       </div>
-      
+
     </section>
   </div>
 </template>
@@ -75,6 +76,10 @@
     width: 90%;
     margin: auto;
     margin-top: 20px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    border-radius: 20px;
   }
 
   h4 {
@@ -86,12 +91,17 @@
   }
 </style>
 <script>
-  import Card from '@/components/Card'
+import Card from '@/components/Card'
 
-  export default {
-    name: 'app-home', 
-    components: {
-      'app-card': Card
+export default {
+  name: 'app-home',
+  components: {
+    'app-card': Card
+  },
+  data: function () {
+    return {
+      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg'
     }
   }
+}
 </script>
