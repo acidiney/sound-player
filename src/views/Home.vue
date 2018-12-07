@@ -97,12 +97,12 @@ export default {
     }
   },
   created: function () {
-    this.$db.collection("recommends").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
+    this.$db.collection('recommends').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         this.recommends.push(doc.data())
-    });
-});
+      })
+    })
   }
 }
 </script>

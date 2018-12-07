@@ -22,15 +22,15 @@
   }
 </style>
 <script>
-  export default {
-    name: 'app-card',
-    props: [
-      'data'
-    ],
-    methods: {
-      startPlay: function (data) {
-        this.$store.dispatch('playmusic', data)
-      }
+export default {
+  name: 'app-card',
+  props: [
+    'data'
+  ],
+  methods: {
+    startPlay: function (data) {
+      this.$store.dispatch('playmusic', data)
     }
   }
+}
 </script>
