@@ -18,7 +18,7 @@
     <div class="comp">
       <font-awesome-icon icon="volume-up" v-on:click="toogleSlider()"/>
       <div class="volume-current" :hidden="!sliderRange">
-        <input type="range" min="1" max="100" value="50">
+        <input type="range" min="0" max="10" value="5" @change="alterVolume($event)">
       </div>
     </div>
   </div>
@@ -109,6 +109,10 @@ export default {
     },
     toogleSlider: function () {
       this.sliderRange = !this.sliderRange
+    },
+    alterVolume: function (e) {
+      console.log(e.target.value)
+      this.$store.dispatch('alterSoundVolume', e.target.value)
     }
   },
   computed: {
