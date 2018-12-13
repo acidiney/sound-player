@@ -15,9 +15,7 @@ import Logo from './Logo'
 export default {
   name: 'Menu',
   data: function () {
-    return {
-
-    }
+    return {}
   },
   components: {
     'app-logo': Logo
@@ -25,9 +23,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
 nav{
   text-align: center;
-
   ul {
     li {
       color: white;
@@ -38,5 +36,21 @@ nav{
 
 .my-account {
   color: #f06206;
+}
+
+@media screen and (min-width: 828px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f069;
+
+    nav {
+      flex: 0.5;
+    }
+  }
+
+  .border-bottom {
+    border-bottom-width: 0;
+  }
 }
 </style>

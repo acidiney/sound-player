@@ -73,13 +73,17 @@ p {
 input[type="range"] {
   border-radius: 12px;
 }
+@media screen and (min-width: 828px) {
+  #player-root {
+    height: 60px;
+  }
+}
 </style>
 <script>
 export default {
   name: 'app-player',
   data: function () {
     return {
-      currentColor: '000',
       sliderRange: false
     }
   },
@@ -91,14 +95,7 @@ export default {
   },
   methods: {
     randomColor: function () {
-      setInterval(() => {
-        let newColor = ''
-        for (let i = 0; i < 6; i++) {
-          newColor += Math.floor(Math.random() / 0.1)
-        }
-        this.currentColor = '#' + newColor
-        newColor = ''
-      }, 3000)
+     this.$store.dispatch('randomColor')
     },
     toogleStreamState: function () {
       if (this.streamState) {
@@ -124,7 +121,10 @@ export default {
     },
     streamState: function () {
       return this.$store.state.streamState
-    }
+    },
+      currentColor: function () {
+          return this.$store.state.currentColor
+      }
   }
 }
 </script>
