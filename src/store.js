@@ -6,9 +6,8 @@ Vue.use(Vuex)
 
 Vue.use(firebase)
 Vue.prototype.$db = firebase.firestore()
-Vue.prototype.$storage = firebase.storage().ref()
 
-window.storage = firebase.storage().ref()
+window.storage = Vue.prototype.$storage = firebase.storage().ref()
 
 export default new Vuex.Store({
   state: {
@@ -19,10 +18,11 @@ export default new Vuex.Store({
       playng: new Audio(),
       info: null
     },
+      currentColor: '#000',
     streamState: false
   },
   mutations: {
-    modifyCurrentMusic: function (state, data) {
+    MUDIFYCURRENTMUSIC: function (state, data) {
       state.currentMusic.music = data.title
       state.currentMusic.singer = data.author
       state.currentMusic.url = data.music
@@ -30,7 +30,7 @@ export default new Vuex.Store({
   },
   actions: {
     playmusic: function ({ commit, dispatch }, data) {
-      commit('modifyCurrentMusic', data)
+      commit('MUDIFYCURRENTMUSIC', data)
       dispatch('startStream')
     },
     startStream: function ({ state }) {
@@ -60,6 +60,15 @@ export default new Vuex.Store({
     },
     alterSoundVolume: function ({ state }, newVolume) {
       state.currentMusic.playng.volume = (newVolume / 100)
+    },
+    randomColor:function ({ state }) {
+      setInterval(() => {
+        let newColor = ''
+        for (let i = 0; i < 6; i++) {
+            newColor += Math.floor(Math.random() / 0.1)
+        }
+        state.currentColor = "#" + newColor
+      }, 3000)
     }
   }
 })
