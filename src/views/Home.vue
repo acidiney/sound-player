@@ -24,12 +24,13 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 div.home {
   padding: 12px;
-  div.list {
+}
+
+div.list {
     display: flex;
     justify-content: space-between;
   }
-}
 </style>

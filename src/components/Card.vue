@@ -5,21 +5,22 @@
     </header>
     <div class="bottom-info">
       <p>
-        <span>Music</span> <br>
-        <small> Author </small>
+        <span>Music</span>
+        <br>
+        <small>Author</small>
       </p>
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-  .card {
-    width: 200px;
-    height: 200px;
+<style scoped>
+.card {
+  width: 200px;
+  height: 200px;
+}
 
-    header {
-      background-color: #282828;
-      padding: 15px;
-      box-shadow: -1px 0px 3px #ccc;
-    }
-  }
+header {
+  background-color: #282828;
+  padding: 15px;
+  box-shadow: -1px 0px 3px #ccc;
+}
 </style>

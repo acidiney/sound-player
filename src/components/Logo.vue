@@ -1,11 +1,12 @@
 <template>
   <div class="logo">
     <p>
-      SOUND <span> PLAYER </span>
+      SOUND
+      <span>PLAYER</span>
     </p>
   </div>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Righteous");
 div.logo {
   flex: 0.5;
@@ -16,13 +17,13 @@ div.logo {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  p {
-    color: #0974cc;
-    span {
-      color: #f06206;
-    }
-  }
+p {
+  color: #0974cc;
+}
 
+span {
+  color: #f06206;
 }
 </style>
