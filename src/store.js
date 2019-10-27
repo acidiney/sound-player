@@ -18,7 +18,7 @@ export default new Vuex.Store({
       playng: new Audio(),
       info: null
     },
-      currentColor: '#000',
+    currentColor: '#000',
     streamState: false
   },
   mutations: {
@@ -61,13 +61,13 @@ export default new Vuex.Store({
     alterSoundVolume: function ({ state }, newVolume) {
       state.currentMusic.playng.volume = (newVolume / 100)
     },
-    randomColor:function ({ state }) {
+    randomColor: function ({ state }) {
       setInterval(() => {
         let newColor = ''
         for (let i = 0; i < 6; i++) {
-            newColor += Math.floor(Math.random() / 0.1)
+          newColor += Math.floor(Math.random() / 0.1)
         }
-        state.currentColor = "#" + newColor
+        state.currentColor = '#' + newColor
       }, 3000)
     }
   }
