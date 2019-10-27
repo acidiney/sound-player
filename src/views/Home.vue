@@ -8,18 +8,45 @@
         <li>Classic</li>
       </ul>
     </nav>
-    <section class="banner" v-bind:style="{'background': `url(${banner})`}">
-    </section>
+    <section
+      class="banner"
+      :style="{'background': `url(${banner})`}"/>
     <section class="cards">
       <h4> Descubra </h4>
       <div class="row">
-        <app-card v-for="(item,i) in recommends" v-bind:key="i"
+        <app-card
+          v-for="(item,i) in recommends"
+          :key="i"
           :data="item"
-        ></app-card>
+        />
       </div>
     </section>
   </div>
 </template>
+<script>
+import Card from '@/components/Card'
+
+export default {
+  name: 'AppHome',
+  components: {
+    'app-card': Card
+  },
+  data: function () {
+    return {
+      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg',
+      recommends: []
+    }
+  },
+  created: function () {
+    this.$db.collection('recommends').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // console.log(`${doc.id} => ${doc.data()}`);
+        this.recommends.push(doc.data())
+      })
+    })
+  }
+}
+</script>
 <style lang="scss" scoped>
 
   @mixin fontActive () {
@@ -82,27 +109,3 @@
     @include fontActive();
   }
 </style>
-<script>
-import Card from '@/components/Card'
-
-export default {
-  name: 'app-home',
-  components: {
-    'app-card': Card
-  },
-  data: function () {
-    return {
-      banner: 'https://2.bp.blogspot.com/-YpLefM2pgkA/W9LS1sRULTI/AAAAAAAAK-4/gIKl41eqEN4GXqxl2548M5nH9GDK6XLhgCLcBGAs/s1600/Matias%2BDam%25C3%25A1sio%2B-%2BAugusta%2B%2528%25C3%2581lbum%2529.jpg',
-      recommends: []
-    }
-  },
-  created: function () {
-    this.$db.collection('recommends').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // console.log(`${doc.id} => ${doc.data()}`);
-        this.recommends.push(doc.data())
-      })
-    })
-  }
-}
-</script>

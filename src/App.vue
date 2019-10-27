@@ -1,27 +1,25 @@
 <template>
   <div id="root">
-    <app-slide-bar class="desktop" />
-    <div class="content">
-      <app-menu class="mobile" />
-      <router-view />
-    </div>
-    <app-player/>
+    <!-- app-slide-bar class="desktop" / -->
+    <router-view />
+    <!--- div class="content">
+      <!- app-menu class="mobile" / ->
+    </div -->
+    <!-- app-player -->
   </div>
 </template>
 
 <script>
 import Menu from './components/Menu'
-import Player from './components/Player'
 import SlideBar from './components/SlideBar'
+// import Player from './components/Shared/Player'
+
 export default {
-  name: 'app-root',
+  name: 'AppRoot',
   components: {
     'app-menu': Menu,
-    'app-player': Player,
+    // 'app-player': Player,
     'app-slide-bar': SlideBar
-  },
-  data: function () {
-    return {}
   }
 }
 </script>

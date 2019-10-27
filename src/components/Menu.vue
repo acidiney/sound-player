@@ -1,6 +1,6 @@
 <template>
   <header>
-    <app-logo></app-logo>
+    <app-logo/>
     <nav>
       <ul class="border-bottom">
         <li> Descubrir </li>
