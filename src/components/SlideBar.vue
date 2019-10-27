@@ -1,11 +1,9 @@
 <template>
-    <div class="slidebar">
-        <app-logo />
+  <div class="slidebar">
+    <app-logo />
 
-        <div class="menu">
-
-        </div>
-    </div>
+    <div class="menu"/>
+  </div>
 </template>
 <style lang="scss" scoped>
     .slidebar {

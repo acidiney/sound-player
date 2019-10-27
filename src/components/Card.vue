@@ -1,12 +1,18 @@
 <template>
-  <div class="card" @click="startPlay(data)">
+  <div
+    class="card"
+    @click="startPlay(data)">
     <header>
-      <img src="../assets/music.png" alt="music" height="75" width="75">
+      <img
+        src="../assets/music.png"
+        alt="music"
+        height="75"
+        width="75">
     </header>
     <div class="bottom-info">
       <p>
-        <span>{{data.title}}</span> <br>
-        <small> {{data.author}} </small>
+        <span>{{ data.title }}</span> <br>
+        <small> {{ data.author }} </small>
       </p>
     </div>
   </div>
@@ -23,7 +29,7 @@
 </style>
 <script>
 export default {
-  name: 'app-card',
+  name: 'AppCard',
   props: [
     'data'
   ],
